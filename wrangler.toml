@@ -1,0 +1,23 @@
+name = "fileverse-cloudflare-worker"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fileverse-db"
+database_id = "114692bb-86c8-479c-9539-36d47587a39e"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["*/2 * * * *", "*/1 * * * *"]
+
+[[rules]]
+type = "Text"
+globs = ["**/*.txt", "**/*.md"]
+
+[vars]
+NODE_ENV = "production"
+
+[observability]
+enabled = true
